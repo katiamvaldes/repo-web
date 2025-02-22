@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Login from './LoginTemp';  // Asegúrate de que el archivo se llame 'Login.js'
+import Login from './LoginTemp';
 import Dashboard from './Dashboard';
 
 const App = () => {
