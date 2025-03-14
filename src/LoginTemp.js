@@ -2,55 +2,55 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [usuario, setUsuario] = useState("");
-  const [contrasena, setContrasena] = useState("");
+  const [usuario, setUsuario] = useState('');
+  const [contrasena, setContrasena] = useState('');
   const navigate = useNavigate();
 
   const manejarEnvio = (e) => {
     e.preventDefault();
-    if (usuario === "admin" && contrasena === "1234") {
-      navigate("/dashboard"); // Redirige si las credenciales son correctas
+    if (usuario === 'admin' && contrasena === '1234') {
+      navigate('/dashboard'); 
     } else {
-      alert("Usuario o contraseña incorrectos");
+      alert('Usuario o contraseña incorrectos');
     }
   };
 
   return (
-    <div className="flex items-center justify-center h-screen bg-black">
-      <div className="bg-gray-900 p-8 rounded-lg shadow-lg w-96">
-        {/* Avatar */}
-        <div className="flex justify-center mb-4">
-          <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-orange-500 rounded-full"></div>
-        </div>
-
-        {/* Título */}
-        <h2 className="text-xl font-bold text-white text-center mb-4">Login</h2>
-
-        {/* Formulario */}
+    <div className="flex items-center justify-center min-h-screen bg-gray-900 text-white">
+      <div className="w-96 bg-gray-800 p-6 rounded-lg shadow-lg text-center">
+        <h2 className="text-2xl font-bold">Iniciar Sesión</h2>
         <form onSubmit={manejarEnvio} className="space-y-4">
           <input
             type="text"
-            placeholder="Username"
-            className="w-full p-3 bg-gray-800 text-white border border-gray-700 rounded focus:outline-none focus:ring-2 focus:ring-red-500"
+            placeholder="Usuario"
             value={usuario}
             onChange={(e) => setUsuario(e.target.value)}
             required
+            className="w-full p-2 rounded bg-gray-700 border border-gray-600"
           />
           <input
             type="password"
             placeholder="Contraseña"
-            className="w-full p-3 bg-gray-800 text-white border border-gray-700 rounded focus:outline-none focus:ring-2 focus:ring-red-500"
             value={contrasena}
             onChange={(e) => setContrasena(e.target.value)}
             required
+            className="w-full p-2 rounded bg-gray-700 border border-gray-600"
           />
-          <button
-            type="submit"
-            className="w-full bg-gradient-to-r from-red-500 to-orange-500 text-white p-3 rounded hover:opacity-80 transition font-semibold"
-          >
-            Sign In
+          <button type="submit" className="w-full bg-blue-500 hover:bg-blue-600 py-2 rounded text-white font-semibold">
+            Ingresar
           </button>
         </form>
+        <p className="mt-4">
+          <a href="/forgot-password" className="text-blue-400 hover:text-blue-300">
+            ¿Olvidaste tu contraseña?
+          </a>
+        </p>
+        <p className="mt-2">
+          ¿No tienes cuenta?{" "}
+          <a href="/register" className="text-blue-400 hover:text-blue-300">
+            Regístrate aquí
+          </a>
+        </p>
       </div>
     </div>
   );
